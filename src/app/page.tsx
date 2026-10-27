@@ -104,8 +104,7 @@ export default function Home() {
                 Hi, I&apos;m {profile.preferredName}.
               </h1>
               <p className="mt-4 max-w-[34rem] text-body-lg text-body">
-                I&apos;m a full-stack and UI engineer building fast, accessible,
-                customer-facing products with React, TypeScript and Next.js.
+                I&apos;m a full-stack engineer who loves untangling complex problems and turning them into fast, accessible products people enjoy using.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a href="#experience" className={pillPrimary}>

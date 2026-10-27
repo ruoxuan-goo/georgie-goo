@@ -7,6 +7,7 @@ import {
   useReducedMotion,
   useScroll,
 } from "framer-motion";
+import { useLenis } from "lenis/react";
 import { useEffect, useId, useRef, useState } from "react";
 import type { experience } from "./resume";
 
@@ -58,6 +59,7 @@ export function ExperienceTimeline({
   now: string;
 }) {
   const [active, setActive] = useState(0);
+  const lenis = useLenis();
   const listRef = useRef<HTMLOListElement>(null);
   const { scrollYProgress } = useScroll({
     target: listRef,
@@ -72,7 +74,12 @@ export function ExperienceTimeline({
         active={active}
         onSelect={(index) => {
           setActive(index);
-          document.getElementById(roleId(index))?.scrollIntoView();
+          const card = document.getElementById(roleId(index));
+          if (!card) return;
+          // Glide with Lenis when it is running; both paths honour the
+          // card's scroll-margin so it clears the sticky header.
+          if (lenis) lenis.scrollTo(card);
+          else card.scrollIntoView();
         }}
       />
       <div className="relative">
