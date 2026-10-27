@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Static HTML export for GitHub Pages; the workflow sets the repo sub-path.
+  output: "export",
+  basePath: process.env.PAGES_BASE_PATH,
   turbopack: {
     rules: {
       "*.css": {
