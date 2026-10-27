@@ -63,10 +63,34 @@ export const skills = [
   },
 ];
 
-export const experience = [
+// start/end are YYYY-MM (end null = current); they drive the career chart.
+// Tags and highlights are drawn from each role's bullet points.
+export const experience: {
+  role: string;
+  company: string;
+  shortCompany: string;
+  start: string;
+  end: string | null;
+  tags: string[];
+  highlight?: { value: string; label: string };
+  period: string;
+  points: string[];
+}[] = [
   {
     role: "Engineer",
     company: "Westpac Banking Corporation",
+    shortCompany: "Westpac",
+    start: "2025-11",
+    end: null,
+    tags: [
+      "React",
+      "TypeScript",
+      "Micro-frontends",
+      "Tailwind CSS",
+      "Jest",
+      "Swagger",
+      "AI tooling",
+    ],
     period: "Nov 2025 – Current",
     points: [
       "Top code contributor to two customer-facing React and TypeScript microfrontends, Book a Banker (business appointment booking) and Needs Selector Tool (product recommendation).",
@@ -83,6 +107,10 @@ export const experience = [
   {
     role: "Software Engineer",
     company: "Codafication",
+    shortCompany: "Codafication",
+    start: "2025-09",
+    end: "2025-11",
+    tags: ["Vite", "Webpack", "npm", "Dependency security"],
     period: "Sept 2025 – Nov 2025",
     points: [
       "Optimised frontend build infrastructure by migrating from Webpack to Vite, reducing build time by 50% and improving hot-reload performance for developers.",
@@ -92,6 +120,21 @@ export const experience = [
   {
     role: "Frontend Engineer",
     company: "Publicis Australia",
+    shortCompany: "Publicis",
+    start: "2024-08",
+    end: "2025-08",
+    tags: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "PayloadCMS",
+      "React Hook Form",
+      "Mapbox",
+      "Google Maps",
+      "WCAG 2",
+      "AWS",
+      "Docker",
+    ],
     period: "Aug 2024 – Aug 2025",
     points: [
       "Led the transition from legacy tech stack to modern React, TypeScript, Next.js architecture, improving maintainability, performance, and developer productivity.",
@@ -105,7 +148,11 @@ export const experience = [
   {
     role: "Sessional Academic",
     company: "Queensland University of Technology (QUT)",
-    period: "July 2024 – Current",
+    shortCompany: "QUT",
+    start: "2024-07",
+    end: "2025-12",
+    tags: ["Salesforce", "Apex", "SOQL"],
+    period: "July 2024 – Dec 2025",
     points: [
       "Delivered face-to-face tutoring sessions for unit ‘Introduction to Enterprise Systems’.",
       "Covered foundational concepts of enterprise system architecture and guided students in software development using Salesforce, including Apex and Salesforce Object Query Language.",
@@ -114,9 +161,23 @@ export const experience = [
   {
     role: "Junior Developer",
     company: "Romeo Digital",
-    period: "Nov 2022 – Aug 2024",
+    shortCompany: "Romeo Digital",
+    start: "2022-10",
+    end: "2024-08",
+    tags: [
+      "React",
+      "React Native",
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "REST APIs",
+      "Payload CMS",
+      "AWS",
+      "WCAG 2",
+    ],
+    period: "Oct 2022 – Aug 2024",
     points: [
-      "Worked with technologies such as TypeScript, JavaScript, React, React Native, Next.js, Tailwind CSS and integrated RESTful APIs and CMS on multiple full-stack development projects.",
+      "Built mobile apps and web applications across multiple full-stack projects using TypeScript, JavaScript, React, React Native, Next.js and Tailwind CSS, integrating RESTful APIs and CMS.",
       "Utilized server-side rendering and other modern optimization techniques to ensure fast, responsive applications with improved load times and performance.",
       "Used AWS Lambda to automate scheduled tasks through cron jobs.",
       "Troubleshot and resolved production incidents and released patches promptly to minimize downtime.",
@@ -125,7 +186,11 @@ export const experience = [
   {
     role: "Blockchain Developer Intern",
     company: "Labrys",
-    period: "Aug 2022 – Oct 2022",
+    shortCompany: "Labrys",
+    start: "2022-07",
+    end: "2022-10",
+    tags: ["Solidity", "Ethereum", "Web3", "MERN"],
+    period: "Jul 2022 – Oct 2022",
     points: [
       "Created, tested and deployed Ethereum Smart Contracts with Solidity.",
       "Designed solutions for Web3.0 products.",

@@ -1,3 +1,4 @@
+import { ExperienceTimeline } from "./experience-timeline";
 import { InteractiveLogoGrid } from "./interactive-logo-grid";
 import {
   achievements,
@@ -165,31 +166,10 @@ export default function Home() {
         </Section>
 
         <Section id="experience" label="Experience" title="Where I've worked.">
-          <ol className="border-t border-hairline">
-            {experience.map((job) => (
-              <li
-                key={`${job.company}-${job.role}`}
-                className="grid gap-2 border-b border-hairline py-8 md:grid-cols-[200px_1fr] md:gap-8"
-              >
-                <p className={`${eyebrow} md:pt-1.5`}>{job.period}</p>
-                <div>
-                  <h3 className="text-display-sm">{job.role}</h3>
-                  <p className="mt-1 text-body-sm text-body">{job.company}</p>
-                  <ul className="mt-4 space-y-2 text-body-md text-body">
-                    {job.points.map((point) => (
-                      <li key={point} className="flex gap-3">
-                        <span
-                          aria-hidden
-                          className="mt-2.5 size-1 shrink-0 rounded-full bg-hairline-strong"
-                        />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <ExperienceTimeline
+            jobs={experience}
+            now={new Date().toISOString().slice(0, 7)}
+          />
         </Section>
 
         <Section
