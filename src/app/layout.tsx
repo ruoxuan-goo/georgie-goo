@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Georgie Goo | Full-stack & UI Engineer",
   description:
-    "Ruo Xuan (Georgie) Goo, a Gold Coast based full-stack and UI engineer building customer-facing products with React, TypeScript and Next.js.",
+    "Georgie Goo, a Gold Coast based full-stack and UI engineer building customer-facing products with React, TypeScript and Next.js.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -24,9 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-white font-sans text-slate-900">
-        {children}
-      </body>
+      <body className="min-h-full font-sans text-ink">{children}</body>
     </html>
   );
 }

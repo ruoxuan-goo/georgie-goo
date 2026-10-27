@@ -1,5 +1,5 @@
 export const profile = {
-  name: "Ruo Xuan Goo",
+  name: "Georgie Goo",
   preferredName: "Georgie",
   title: "Full-stack engineer | UI engineer",
   location: "Gold Coast, QLD",
