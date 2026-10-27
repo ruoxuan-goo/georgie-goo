@@ -6,7 +6,7 @@ export const profile = {
   email: "georgie.goo@westpac.com.au",
   linkedin: "https://www.linkedin.com/in/ruoxuan-goo/",
   summary:
-    "Highly driven mid-level full-stack engineer. I believe in continuous learning, teamwork and problem-solving. I am also passionate about leveraging emerging technologies and staying ahead of industry trends to contribute to innovative projects that drive digital transformation and create meaningful user experiences.",
+    "Highly driven full-stack engineer. I believe in continuous learning, teamwork and problem-solving. I am also passionate about leveraging emerging technologies and staying ahead of industry trends to contribute to innovative projects that drive digital transformation and create meaningful user experiences.",
 };
 
 export const skills = [
@@ -169,7 +169,7 @@ export const education = [
   },
   {
     title: "AI Engineer Bootcamp",
-    period: "Nov 2024 – April 2025",
+    period: "2025",
     detail: "Generative AI, LLMs Overview, RAG, Langchain.js, OpenAI",
   },
 ];
