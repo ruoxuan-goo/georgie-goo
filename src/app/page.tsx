@@ -8,7 +8,6 @@ import {
   projects,
   skills,
 } from "./resume";
-import { WestpacLogo } from "./westpac-logo";
 
 const nav = [
   { href: "#about", label: "About" },
@@ -59,7 +58,7 @@ function Section({
 export default function Home() {
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-hairline bg-canvas/90 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-canvas/70 backdrop-blur-xl backdrop-saturate-150">
         <div className={`${container} flex h-16 items-center gap-4`}>
           <a
             href="#top"
@@ -81,15 +80,12 @@ export default function Home() {
               ))}
             </ul>
           </nav>
-          <div className="ml-auto flex items-center gap-4 md:ml-0 sm:gap-6">
-            <a
-              href={`mailto:${profile.email}`}
-              className="relative inline-flex h-9 items-center rounded-pill bg-ink px-4 text-button-md text-white transition-colors duration-200 before:absolute before:inset-x-0 before:-inset-y-1 hover:bg-[#383838]"
-            >
-              Get in touch
-            </a>
-            <WestpacLogo className="h-5 w-auto shrink-0 sm:h-6" />
-          </div>
+          <a
+            href={`mailto:${profile.email}`}
+            className="relative ml-auto inline-flex h-9 items-center rounded-pill bg-ink px-4 text-button-md text-white transition-colors duration-200 before:absolute before:inset-x-0 before:-inset-y-1 hover:bg-[#383838] md:ml-0"
+          >
+            Get in touch
+          </a>
         </div>
       </header>
 
@@ -107,9 +103,8 @@ export default function Home() {
                 Hi, I&apos;m {profile.preferredName}.
               </h1>
               <p className="mt-4 max-w-[34rem] text-body-lg text-body">
-                I&apos;m a full-stack and UI engineer building fast,
-                accessible, customer-facing products with React, TypeScript and
-                Next.js.
+                I&apos;m a full-stack and UI engineer building fast, accessible,
+                customer-facing products with React, TypeScript and Next.js.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a href="#experience" className={pillPrimary}>

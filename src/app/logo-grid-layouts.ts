@@ -6,6 +6,13 @@ import { logoParts, type LogoPart, type Point } from "./westpac-logo";
 const COLUMN_UNITS = 100;
 const ROW_UNITS = 75;
 
+// Pulse: clicking the grid's top-right cell sends a wave outward from that
+// corner, moving ~40ms per column of distance. Each
+// cell's flash is sized so the whole wave lasts about 700ms on every layout.
+const PULSE_MS_PER_COLUMN = 40;
+const PULSE_TOTAL_MS = 700;
+const PULSE_MIN_FLASH_MS = 320;
+
 type LogoGridLayoutConfig = {
   name: string;
   /** Tailwind classes that show this layout only at its breakpoint. */
@@ -86,9 +93,13 @@ export type LogoGridCell = {
   parts: LogoPart[];
   /** Parts with a meaningful share of the cell; these make it interactive. */
   namedParts: LogoPart[];
-  shade: string;
+  accent: string;
   tint: string;
   soft: boolean;
+  /** Pulse start (ms), by distance from the grid's top-right corner. */
+  pulseDelay: number;
+  /** The top-right cell, which starts the pulse when activated. */
+  pulseTrigger: boolean;
 };
 
 export type LogoGridLayout = {
@@ -99,6 +110,8 @@ export type LogoGridLayout = {
   templateAreas: string;
   logoTransform: string;
   cells: LogoGridCell[];
+  /** How long each cell stays lit during the pulse (ms). */
+  pulseFlash: number;
 };
 
 export const logoGridLayouts: LogoGridLayout[] = layoutConfigs.map(buildLayout);
@@ -154,14 +167,21 @@ function buildLayout(config: LogoGridLayoutConfig): LogoGridLayout {
       );
     shades.set(area, shade);
 
+    const distance = Math.hypot(
+      columns * COLUMN_UNITS - (box.x + box.w / 2),
+      box.y + box.h / 2,
+    );
+
     cells.push({
       area,
       viewBox: `${box.x} ${box.y} ${box.w} ${box.h}`,
       parts: logoParts.filter((_, i) => overlaps[i] > 0),
       namedParts: logoParts.filter((_, i) => overlaps[i] > box.w * box.h * 0.1),
-      shade,
+      accent: shade,
       tint: mix(shade, "#fafafa", soft ? 0.18 : 0.1),
       soft,
+      pulseDelay: Math.round((distance / COLUMN_UNITS) * PULSE_MS_PER_COLUMN),
+      pulseTrigger: rect.r0 === 0 && rect.c1 === columns,
     });
   });
 
@@ -173,6 +193,10 @@ function buildLayout(config: LogoGridLayoutConfig): LogoGridLayout {
     templateAreas: config.areas.map((row) => `"${row}"`).join(" "),
     logoTransform: `translate(${x} ${y}) scale(${scale})`,
     cells,
+    pulseFlash: Math.max(
+      PULSE_MIN_FLASH_MS,
+      PULSE_TOTAL_MS - Math.max(...cells.map((c) => c.pulseDelay)),
+    ),
   };
 }
 
